@@ -74,6 +74,7 @@ enum Cards {
   Linde("Linde", [Typen.Baum], [Pos.mid]),
   Luchs("Luchs", [Typen.Pfotentier], [Pos.left, Pos.right]),
   Maulwurf("Maulwurf", [Typen.Pfotentier], [Pos.bottom]),
+  Moorbirke("Moorbirke", [Typen.Baum], [Pos.mid]), // TODO
   Moos("Moos", [Typen.Pflanze], [Pos.bottom]),
   Mopsfledermaus("Mopsfledermaus", [Typen.Fledermaus], [Pos.left, Pos.right]),
   Parasol("Parasol", [Typen.Pilz], [Pos.bottom]),
@@ -143,10 +144,7 @@ extension CardsExtension on Cards {
       case Cards.Bergmolch:
         return player.typenAnzahl[Typen.Insekt]! * 2;
       case Cards.Birke:
-        return allCards
-            .where((element) => element == "Birke" || element == "Moorbirke")
-            .toList()
-            .length;
+        return 1;
       case Cards.Braunbaer:
         return 0; // siehe Höhle
       case Cards.Braunes_Langohr:
@@ -241,6 +239,8 @@ extension CardsExtension on Cards {
             : 0;
       case Cards.Maulwurf:
         return 0;
+      case Cards.Moorbirke:
+        return 1; //TODO
       case Cards.Moos:
         return (player.typenAnzahl[Typen.Baum]! +
                     player.karteAnzahl[Cards.Holzbiene.longname]!) >=
